@@ -30,6 +30,14 @@ function allWordsLoad() {
     .then((res) => res.json())
     .then((data) => allWordsDisplay(data.data));
 }
+// 🔃Words by Levels:
+const wordByLevelLoad = (id) => {
+  const url = `https://openapi.programming-hero.com/api/level/${id}`;
+  console.log(url);
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => allWordsDisplay(data.data));
+};
 
 // allLevelsLoadDisplay
 // "id": 101,
@@ -40,13 +48,14 @@ function allLevelsLoadDisplay(allLevels) {
   for (const levels of allLevels) {
     const createDiv = document.createElement("div");
     createDiv.innerHTML = `
-         <button class="btn hover:bg-sky-300">
+         <button onclick="wordByLevelLoad(${levels.level_no})" class="btn hover:bg-sky-300">
             <img src="./assets/fa-book-open.png" alt="" />${levels.lessonName}
           </button>
     `;
     btnLevels.append(createDiv);
   }
 }
+
 // allWordsDisplay:
 // "data": [
 // {
@@ -58,6 +67,7 @@ function allLevelsLoadDisplay(allLevels) {
 // },
 const allWordsDisplay = (allWords) => {
   const wordLevelContainer = document.getElementById("wordLevel-container");
+  wordLevelContainer.innerHTML = "";
   allWords.forEach((words) => {
     const createdDiv = document.createElement("div");
     createdDiv.innerHTML = `
@@ -91,4 +101,4 @@ const allWordsDisplay = (allWords) => {
   });
 };
 allLevelsLoad();
-allWordsLoad();
+// allWordsLoad();
