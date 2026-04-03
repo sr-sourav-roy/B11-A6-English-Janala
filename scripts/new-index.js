@@ -1,3 +1,13 @@
+// toggle function:
+const showLoader = () => {
+  document.getElementById("loader").classList.remove("hidden");
+  document.getElementById("wordLevel-container").classList.add("hidden");
+};
+
+const hidedLoader = () => {
+  document.getElementById("loader").classList.add("hidden");
+  document.getElementById("wordLevel-container").classList.remove("hidden");
+};
 // login btn ------->
 document
   .getElementById("btn-login")
@@ -9,7 +19,15 @@ document
 
     if (inputName == "sourav") {
       if (convertedPass === 1234) {
-        console.log("done");
+        // Navbar and Section see this:
+        document.getElementById("navbar").classList.remove("hidden");
+        document.getElementById("vocab-section").classList.remove("hidden");
+        document
+          .getElementById("Frequrntly-section")
+          .classList.remove("hidden");
+        // login and logo section hidden
+        // event.target.closest("form").classList.add("hidden");
+        document.getElementById("login").classList.add("hidden");
       } else {
         alert("password incorrect☠️");
       }
@@ -17,6 +35,17 @@ document
       alert("Name incorrect☠️");
     }
   });
+
+// 📜faq btn scroll call functions:
+document.getElementById("faq-btn").addEventListener("click", function () {
+  const section1 = document.getElementById("vocab-section");
+  section1.scrollIntoView({ behavior: "smooth" });
+});
+// 📜Learn scroll call functions:
+document.getElementById("Learn-btn").addEventListener("click", function () {
+  const section2 = document.getElementById("Frequrntly-section");
+  section2.scrollIntoView({ behavior: "smooth" });
+});
 
 // removeActiveClass functions:
 function removeActiveClass() {
@@ -33,12 +62,14 @@ function allLevelsLoad() {
 }
 // 🔃 All Words:
 function allWordsLoad() {
+  showLoader();
   fetch("https://openapi.programming-hero.com/api/words/all")
     .then((res) => res.json())
     .then((data) => allWordsDisplay(data.data));
 }
 // 🔃Words by Levels load:
 const wordByLevelLoad = (id) => {
+  showLoader();
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   console.log(url);
   fetch(url)
@@ -100,6 +131,7 @@ const allWordsDisplay = (allWords) => {
           <h1 class="text-2xl font-semibold">নেক্সট Lesson এ যান</h1>
         </div>
     `;
+    hidedLoader();
     return;
   }
   allWords.forEach((words) => {
@@ -133,6 +165,7 @@ const allWordsDisplay = (allWords) => {
     `;
     wordLevelContainer.append(createdDiv);
   });
+  hidedLoader();
 };
 // allWordsDetails:
 const allWordDetails = (data) => {
