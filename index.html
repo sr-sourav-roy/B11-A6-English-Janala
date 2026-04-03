@@ -12,6 +12,14 @@
       type="text/css"
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- css -->
+    <style>
+      .active {
+        background-color: #422ad5;
+        color: white;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -110,7 +118,16 @@
       <section
         class="w-11/12 mx-auto grid grid-cols-3 gap-y-10 shadow-sm bg-[#F8F8F8] p-8 gap-8 mb-16"
         id="wordLevel-container"
-      ></section>
+      >
+        <!-- নেক্সট Lesson এ যান -->
+        <div class="col-span-full flex flex-col justify-center items-center">
+          <img class="w-[150px]" src="./assets/alert-error.png" alt="" />
+          <p class="text-[#79716B] text-sm mb-3">
+            এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।
+          </p>
+          <h1 class="text-2xl font-semibold">নেক্সট Lesson এ যান</h1>
+        </div>
+      </section>
 
       <!-- Frequently Asked Questions -->
       <section class="w-11/12 mx-auto mb-20">
@@ -186,6 +203,22 @@
           </div>
         </div>
       </section>
+
+      <!-- Open the modal using ID.showModal() method -->
+      <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+      <dialog id="word_Detail" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+          <div id="word_Detail_container">
+            <!-- created by div -->
+          </div>
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </main>
 
     <!-- footer sections -->
@@ -251,7 +284,6 @@
         </footer>
       </div>
     </footer>
-
     <!-- js sections -->
     <!-- <script src="./scripts/index.js"></script> -->
     <script src="./scripts/new-index.js "></script>
