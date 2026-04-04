@@ -168,17 +168,49 @@ const allWordsDisplay = (allWords) => {
   hidedLoader();
 };
 // allWordsDetails:
+// {
+// "status": true,
+// "message": "successfully fetched a word details",
+// "data": {
+// "word": "Eager",
+// "meaning": "আগ্রহী",
+// "pronunciation": "ইগার",
+// "level": 1,
+// "sentence": "The kids were eager to open their gifts.",
+// "points": 1,
+// "partsOfSpeech": "adjective",
+// "synonyms": [
+// "enthusiastic",
+// "excited",
+// "keen"
+// ],
+// "id": 5
+// }
+// }
 const allWordDetails = (data) => {
   document.getElementById("word_Detail").showModal();
   const wordDetailContainer = document.getElementById("word_Detail_container");
   console.log(wordDetailContainer);
   wordDetailContainer.innerHTML = `
-  <div class="card  bg-base-100 card-md shadow-sm">
-  <div class="card-body">
-    <h2 class="card-title">Medium Card</h2>
-    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+  <div class="card  bg-base-100">
+    <div class="card-body">
+      <div class="card bg-base-100 card-md shadow-sm bg-sky-100 ">
+        <div class="card-body ">
+          <h1 class="flex font-bold text-xl"> ${data.word} (<img class="w-6" src="https://img.icons8.com/?size=50&id=9622&format=png" alt="" /> ${data.pronunciation})</h1>
+          <p class="font-bold">meaning</p>
+          <p>${data.meaning}</p>
+          <p class="font-bold">Example</p>
+          <p>${data.sentence}</p>
+          <div>
+            <h1  class="font-bold">সমার্থক শব্দ গুলো</h1>
+            <button class="font-extralight">${data.synonyms[0]}</button>
+            <button class="font-extralight">${data.synonyms[1]}</button>
+            <button class="font-extralight">${data.synonyms[3]}</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
   `;
 };
 allLevelsLoad();
