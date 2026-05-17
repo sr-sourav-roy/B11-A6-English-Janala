@@ -1,1 +1,1 @@
-Implemented basic validation using sample credentials (e.g., username: sourav/rintu/annto, password: 1234/456/789)
+Implemented basic validation using sample credentials(username: sourav; password: 1234)
